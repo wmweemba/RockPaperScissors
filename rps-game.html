@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scisors</title>
+</head>
+<body>
+  
+  <script>
+    //Function returns random value amongst 3 options 'rock paper or scissors'
+    function computerPlay() {
+        let rand = Math.floor(Math.random() * 3);
+        let computerMove = rand;
+
+        if (computerMove === 0) {
+            return 'Rock';
+        } else if (computerMove === 1) {
+            return 'Paper';
+        } else if (computerMove === 2) {
+            return 'Scissors';
+        } else {
+            return 'Invalid Move';
+        }
+    } 
+
+  </script>
+</body>
+</html>
