@@ -7,7 +7,18 @@
 <body>
   
   <script>
-    //Function returns random value amongst 3 options 'rock paper or scissors'
+      //Declare some global variables that can be used by all the functions
+    const playerSelection = humanPlay();
+    const computerSelection = computerPlay();
+
+    //Human Player must make a selection between ROCK, PAPER or SCISSORS.
+    function humanPlay () {
+        let humanChoice = prompt("Rock,Paper or Scissors", "Choose One");
+        return humanChoice;
+    }
+
+    //Computer's move is below
+    //Function returns random value amongst 3 options 'rock paper or scissors'.
     function computerPlay() {
         let rand = Math.floor(Math.random() * 3);
         let computerMove = rand;
@@ -22,6 +33,47 @@
             return 'Invalid Move';
         }
     } 
+
+//Function to play a single round of Rock, Paper, Sissors. Using a function
+
+function singleRound (playerSelection, computerSelection) {
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+
+    if (player === "rock" & computer === "scissors") {
+        return "You Win! Rock beats Scissors";
+    } else if (player === "rock" & computer === "paper") {
+        return "You Lose! Paper beats Rock";
+    } else if (player === "rock" & computer === "rock") {
+        return "Draw! you both played Rock";
+    } else if (player === "paper" & computer === "rock") {
+        return "You Win! Paper beats Rock";
+    } else if (player === "paper" & computer === "scissors") {
+        return "You Lose! Scissors beats Paper";
+    } else if (player === "paper" & computer === "paper") {
+        return "Draw! You both played Paper";
+    } else if (player === "scissors" & computer === "rock") {
+        return "You Lose! Rock beats Scissors";
+    } else if (player === "scissors" & computer === "paper") {
+        return "You Win! Scissors beats Paper";
+    } else {
+        return "Draw! You both played Scissors";
+    }
+}
+
+// To test if the above is working.
+//console.log(singleRound(playerSelection, computerSelection))
+
+//Full Rock Paper Scissors game of 5 rounds.
+
+function game () {
+    let round1 = singleRound(playerSelection, computerSelection);
+    return round1;
+    let round2 = singleRound(playerSelection, computerSelection);
+    return round2;
+}
+
+console.log(game());
 
   </script>
 </body>
