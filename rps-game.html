@@ -7,16 +7,42 @@
 <body>
   
   <script>
-      //Declare some global variables that can be used by all the functions
-    const playerSelection = humanPlay();
-    const computerSelection = computerPlay();
+    //Declare some global variables that can be used by all the functions
+    //let playerSelection = humanChoices;
+    //let computerSelection = computerPlay();
+    //let fullGame = singleRound();
 
     //Human Player must make a selection between ROCK, PAPER or SCISSORS.
-    function humanPlay () {
-        let humanChoice = prompt("Rock,Paper or Scissors", "Choose One");
-        return humanChoice;
-    }
+    //function humanPlay () {
+      //  let humanChoice = prompt("Rock,Paper or Scissors", "Choose One");
+        //return humanChoice;
+    //}
 
+    //Array and FOR loop used to collect 5 human choices for a full game
+    let humanChoices = [];
+        for(var i = 0; i < 5; i++) {
+        humanChoices.push(prompt("Rock,Paper or Scissors", "Play 5 times"));
+    }
+        for(var i = 0; i < 5; i++) {
+        console.log(humanChoices[i]);
+}
+/*
+    //Breaking down the Array back into 5 variables
+var [one, two, three] = foo;
+console.log(one); // "one"
+console.log(two); // "two"
+console.log(three); // "three"
+*/
+
+
+// Get 5 random values from the computer
+let computerChoices = [];
+for (var i = 0; i < 5; i++) {
+    computerChoices.push(computerPlay());
+}
+for(var i = 0; i < 5; i++) {
+        console.log(computerChoices[i]);
+}
     //Computer's move is below
     //Function returns random value amongst 3 options 'rock paper or scissors'.
     function computerPlay() {
@@ -32,13 +58,12 @@
         } else {
             return 'Invalid Move';
         }
-    } 
+    }
 
 //Function to play a single round of Rock, Paper, Sissors. Using a function
-
-function singleRound (playerSelection, computerSelection) {
-    let player = playerSelection.toLowerCase();
-    let computer = computerSelection.toLowerCase();
+    /*function singleRound () {
+        let player = playerSelection.toLowerCase();
+        let computer = computerSelection.toLowerCase();
 
     if (player === "rock" & computer === "scissors") {
         return "You Win! Rock beats Scissors";
@@ -59,21 +84,23 @@ function singleRound (playerSelection, computerSelection) {
     } else {
         return "Draw! You both played Scissors";
     }
-}
+}*/
+//console.log(singleRound(playerSelection, computerSelection));
 
-// To test if the above is working.
-//console.log(singleRound(playerSelection, computerSelection))
+    //The full game
+    /*function game () {
+        let round1 = fullGame;
+        let round2 = fullGame;
+        return round1 + round2;
 
-//Full Rock Paper Scissors game of 5 rounds.
+        /*let results = [];
+        let i = 0;
+        for (i = 0; i < 5; i++) {
+        results.push(fullGame);
+        return results.join(', ');*/
+    
 
-function game () {
-    let round1 = singleRound(playerSelection, computerSelection);
-    return round1;
-    let round2 = singleRound(playerSelection, computerSelection);
-    return round2;
-}
-
-console.log(game());
+//console.log(game());
 
   </script>
 </body>
