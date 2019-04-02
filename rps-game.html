@@ -7,100 +7,61 @@
 <body>
   
   <script>
-    //Declare some global variables that can be used by all the functions
-    //let playerSelection = humanChoices;
-    //let computerSelection = computerPlay();
-    //let fullGame = singleRound();
 
-    //Human Player must make a selection between ROCK, PAPER or SCISSORS.
-    //function humanPlay () {
-      //  let humanChoice = prompt("Rock,Paper or Scissors", "Choose One");
-        //return humanChoice;
-    //}
+// Delcare global variables to keep the score
 
-    //Array and FOR loop used to collect 5 human choices for a full game
-    let humanChoices = [];
-        for(var i = 0; i < 5; i++) {
-        humanChoices.push(prompt("Rock,Paper or Scissors", "Play 5 times"));
-    }
-        for(var i = 0; i < 5; i++) {
-        console.log(humanChoices[i]);
-}
-/*
-    //Breaking down the Array back into 5 variables
-var [one, two, three] = foo;
-console.log(one); // "one"
-console.log(two); // "two"
-console.log(three); // "three"
-*/
+let choices = ["rock","paper","scissors"]; //We use an array to hold our 3 possible choices
+var playerScore = 0;
+var computerScore = 0;
+var drawedScore = 0;
 
+game()
 
-// Get 5 random values from the computer
-let computerChoices = [];
-for (var i = 0; i < 5; i++) {
-    computerChoices.push(computerPlay());
-}
-for(var i = 0; i < 5; i++) {
-        console.log(computerChoices[i]);
-}
-    //Computer's move is below
-    //Function returns random value amongst 3 options 'rock paper or scissors'.
-    function computerPlay() {
-        let rand = Math.floor(Math.random() * 3);
-        let computerMove = rand;
+function singleRound() {
 
-        if (computerMove === 0) {
-            return 'Rock';
-        } else if (computerMove === 1) {
-            return 'Paper';
-        } else if (computerMove === 2) {
-            return 'Scissors';
-        } else {
-            return 'Invalid Move';
-        }
+        // computer choice is random. it selects from the choices array
+        computerSelection = choices[Math.floor(Math.random() * choices.length)];
+
+        // player choice using a prompt box. whatever the player types in is converted to lowercase. (case insensitive)
+        let playerSelection = prompt("Rock, paper or scissors? Choose one");
+        playerSelection = playerSelection.toLowerCase();
+
+    //Returns what the computer has selected and what the human has selected
+    alert("Valid choice. You chose " + playerSelection)
+    alert("cpu chose " + computerSelection)
+
+    // Compares what the computer and human chose to determine a winner
+    if (playerSelection === computerSelection) {
+        drawedScore++;
+        alert("It's a DRAW!")
+  
+      } else if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
+        alert("You WIN! " + playerSelection + " beats " + computerSelection)
+        playerScore++;
+  
+      } else {
+        alert("You LOSE! " + computerSelection + " beats " + playerSelection)
+        computerScore++;
+      }
+      alert("End of ...") 
     }
 
-//Function to play a single round of Rock, Paper, Sissors. Using a function
-    /*function singleRound () {
-        let player = playerSelection.toLowerCase();
-        let computer = computerSelection.toLowerCase();
-
-    if (player === "rock" & computer === "scissors") {
-        return "You Win! Rock beats Scissors";
-    } else if (player === "rock" & computer === "paper") {
-        return "You Lose! Paper beats Rock";
-    } else if (player === "rock" & computer === "rock") {
-        return "Draw! you both played Rock";
-    } else if (player === "paper" & computer === "rock") {
-        return "You Win! Paper beats Rock";
-    } else if (player === "paper" & computer === "scissors") {
-        return "You Lose! Scissors beats Paper";
-    } else if (player === "paper" & computer === "paper") {
-        return "Draw! You both played Paper";
-    } else if (player === "scissors" & computer === "rock") {
-        return "You Lose! Rock beats Scissors";
-    } else if (player === "scissors" & computer === "paper") {
-        return "You Win! Scissors beats Paper";
-    } else {
-        return "Draw! You both played Scissors";
-    }
-}*/
-//console.log(singleRound(playerSelection, computerSelection));
-
-    //The full game
-    /*function game () {
-        let round1 = fullGame;
-        let round2 = fullGame;
-        return round1 + round2;
-
-        /*let results = [];
-        let i = 0;
-        for (i = 0; i < 5; i++) {
-        results.push(fullGame);
-        return results.join(', ');*/
-    
-
-//console.log(game());
+    //Fuction to play a full game of 5 rounds
+    function game() {
+     // Execute game 5 times
+     for (let i = 1; i < 6; i++) {
+        singleRound()
+       alert("Round " + i)
+     }
+     alert("Match over")
+   }
+   //Gives us the final score after 5 rounds of the game
+   if (playerScore > computerScore) {
+          alert("You won!");
+        } else if (playerScore < computerScore) {
+          alert("Computer won");
+        } else alert("it's a draw");
+   alert("The final score is: \nPlayer: " + playerScore + " | CPU: " + computerScore + "\nDraw: " + drawedScore)
 
   </script>
 </body>
